@@ -1,0 +1,212 @@
+import 'package:flutter/material.dart';
+
+
+
+
+// ignore: camel_case_types
+class Student_dashboard extends StatelessWidget {
+ const Student_dashboard({super.key});
+
+
+ @override
+
+ Widget build(BuildContext context) {
+  return Scaffold(
+   backgroundColor: const Color(0xFFFFF7FF),
+
+   appBar: AppBar(
+    backgroundColor: const Color(0xFFFFF7FF),
+    title: const Text('Student Dashboard'),
+    actions: [
+     IconButton(
+      onPressed: () {},
+      icon: const Icon(Icons.logout),
+     ),
+    ],
+   ),
+
+   body: const SingleChildScrollView(
+    padding: EdgeInsets.all(16),
+    child: Column(
+     crossAxisAlignment: CrossAxisAlignment.start,
+     children: [
+      Row(
+       children: [
+        CircleAvatar(
+         radius: 38,
+         backgroundImage: AssetImage(
+          'assets/hack.jpg',
+         ),
+        ),
+
+
+        SizedBox(width: 16),
+
+        Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: [
+          Text(
+           'geoffrey dalisay',
+           style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+           ),
+          ),
+          SizedBox(height: 4),
+          Text('ID: 560-150'),
+          Text('BSIT 3RD YEAR'),
+         ],
+        ),
+       ],
+      ),
+
+      SizedBox(height: 24),
+
+
+      Card(
+       elevation: 3,
+       child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+         children: [
+          InfoRow(
+           icon: Icons.email,
+           text: 'geoffrey@gmail.com',
+          ),
+          SizedBox(height: 20),
+          InfoRow(
+           icon: Icons.phone,
+           text: '+63 422 21 546',
+          ),
+          SizedBox(height: 20),
+          InfoRow(
+           icon: Icons.home,
+           text: ' Wonderland, Davao City, Philippines',
+          ),
+         ],
+        ),
+       ),
+      ),
+
+
+      SizedBox(height: 24),
+
+
+      Text(
+
+       'Subjects',
+       style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+       ),
+      ),
+
+
+      SizedBox(height: 12),
+
+
+      SubjectCard(
+       subject: 'Mobile App Development',
+       instructor: 'Mr. Smith',
+       schedule: 'Mon/Wed 10:00 - 11:30 AM',
+      ),
+
+
+      SubjectCard(
+       subject: 'Database Systems',
+       instructor: 'Mrs. Garcia',
+       schedule: 'Tue/Thu 1:00 - 2:30 PM',
+      ),
+
+
+      SubjectCard(
+       subject: 'Operating Systems',
+       instructor: 'Dr. Lee',
+       schedule: 'Fri 8:00 - 11:00 AM',
+
+      ),
+     ],
+    ),
+   ),
+
+   floatingActionButton: FloatingActionButton(
+
+    onPressed: () {},
+
+    child: const Icon(Icons.add),
+   ),
+  );
+ }
+}
+
+
+class InfoRow extends StatelessWidget {
+ final IconData icon;
+ final String text;
+ const InfoRow({
+  super.key,
+  required this.icon,
+  required this.text,
+
+ });
+
+
+ @override
+ Widget build(BuildContext context) {
+  return Row(
+   children: [
+    Icon(icon),
+    const SizedBox(width: 16),
+    Expanded(
+     child: Text(
+      text,
+      style: const TextStyle(fontSize: 16),
+     ),
+    ),
+   ],
+  );
+ }
+}
+
+
+class SubjectCard extends StatelessWidget {
+
+ final String subject;
+ final String instructor;
+ final String schedule;
+
+
+ const SubjectCard({
+
+  super.key,
+  required this.subject,
+  required this.instructor,
+  required this.schedule,
+
+ });
+
+ @override
+ Widget build(BuildContext context) {
+  return Card(
+   margin: const EdgeInsets.only(bottom: 8),
+   child: Padding(
+    padding: const EdgeInsets.all(16),
+    child: Column(
+     crossAxisAlignment: CrossAxisAlignment.start,
+     children: [
+      Text(
+       subject,
+       style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+       ),
+      ),
+      const SizedBox(height: 4),
+      Text('Instructor: $instructor'),
+      Text('Schedule: $schedule'),
+     ],
+    ),
+   ),
+  );
+ }
+}
